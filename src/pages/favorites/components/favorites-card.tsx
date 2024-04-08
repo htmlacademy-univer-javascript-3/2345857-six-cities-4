@@ -1,25 +1,23 @@
 import { FC } from 'react';
 import { Offer } from '../../../types/offer';
 
-type OfferCardProps = {
+type FavoritesCardProps = {
     offer: Offer;
-    onMouseEnter?: () => void;
-    onMouseLeave?: () => void;
 }
 
-export const OfferCard: FC<OfferCardProps> = ({ offer, onMouseEnter, onMouseLeave }) => (
-  <article className="cities__card place-card" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+export const FavoritesCard: FC<FavoritesCardProps> = ({ offer }) => (
+  <article className="favorites__card place-card">
     {offer.isPremium && (
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
     )}
-    <div className="cities__image-wrapper place-card__image-wrapper">
+    <div className="favorites__image-wrapper place-card__image-wrapper">
       <a href="#">
-        <img className="place-card__image" src={offer.previewImage} width="260" height="200" alt="Place image" />
+        <img className="place-card__image" src={offer.previewImage} width="150" height="110" alt="Place image" />
       </a>
     </div>
-    <div className="place-card__info">
+    <div className="favorites__card-info place-card__info">
       <div className="place-card__price-wrapper">
         <div className="place-card__price">
           <b className="place-card__price-value">&euro;{offer.price}</b>

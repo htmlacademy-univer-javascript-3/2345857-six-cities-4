@@ -7,16 +7,28 @@ import { PrivateRoute } from './components/private-route';
 import { FavoritesPage } from './pages/favorites/favorites-page';
 import { AppRoute } from './types/app-route';
 import { NotFoundPage } from './pages/service/not-found-page';
+import { Offer } from './types/offer';
+import { OfferDetail } from './types/offer-detail';
+import { Review } from './types/review';
+import { User } from './types/user';
 
-export const App: FC = () => (
+type AppProps = {
+    offers: Offer[];
+    offersDetail: OfferDetail[];
+    reviewsMap: Map<string, Review[]>;
+    user: User;
+    favorites: string[];
+}
+
+export const App: FC<AppProps> = ({ offers, offersDetail, reviewsMap, user, favorites }) => (
   <BrowserRouter>
     <Routes>
-      <Route path={AppRoute.Index} element={<MainPage offers={5} />} />
+      <Route path={AppRoute.Index} element={<MainPage offers={offers} user={user} favoriteCount={favorites.length} />} />
       <Route path={AppRoute.Login} element={<LoginPage />} />
-      <Route path={AppRoute.Offer} element={<OfferPage/>} />
+      <Route path={AppRoute.Offer} element={<OfferPage offerDetails={offersDetail} reviewsMap={reviewsMap} />} />
       <Route path={AppRoute.Favorites} element={
-        <PrivateRoute user={null}>
-          <FavoritesPage />
+        <PrivateRoute user={user}>
+          <FavoritesPage offers={offers} user={user} favorites={favorites} />
         </PrivateRoute>
       }
       />
