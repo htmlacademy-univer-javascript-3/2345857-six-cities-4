@@ -41,7 +41,7 @@ export const App: FC<AppProps> = ({ offers, offersDetail, reviewsMap, user, favo
         <Route path={AppRoute.Favorites} element={
           <PrivateRoute user={user}>
             <MainLayout user={user} favoriteCount={favorites.length} >
-              <FavoritesPage offers={offers} user={user} favorites={favorites} />
+              <FavoritesPage offers={offers} favorites={favorites} />
             </MainLayout>
           </PrivateRoute>
         }
