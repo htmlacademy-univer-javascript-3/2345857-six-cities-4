@@ -26,6 +26,6 @@ export const reducer = createReducer(initState, (builder) => {
       state.offers = action.payload;
     })
     .addCase(updateSortMethod, (state, action) => {
-        state.sortMethod = action.payload
+      state.sortMethod = action.payload;
     });
 });

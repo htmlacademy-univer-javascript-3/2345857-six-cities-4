@@ -25,7 +25,7 @@ export const OfferCardList: FC<OfferCardListProps> = ({ offers, setActivePoint, 
   const selectedSortMethod = useAppSelector(selectCurrentSortMethod);
 
   const [sortedOffers, setSortedOffers] = useState(offers);
-  
+
   useEffect(() => {
     if (selectedSortMethod) {
       setSortedOffers(offers.slice().sort((a, b) => {
@@ -45,7 +45,7 @@ export const OfferCardList: FC<OfferCardListProps> = ({ offers, setActivePoint, 
       }));
     }
   }, [offers, selectedSortMethod]);
-  
+
   const handleCardFocus = (id: string) => {
     const point = points.find((p) => p.id === id);
     const city = offers.find((offer) => offer.id === id)?.city;
