@@ -31,13 +31,15 @@ export const App: FC<AppProps> = ({ offers, offersDetail, reviewsMap, user, favo
           <MainLayout color="gray" user={user} favoriteCount={favorites.length}>
             <MainPage />
           </MainLayout>
-        } />
+        }
+        />
         <Route path={AppRoute.Login} element={<LoginPage />} />
         <Route path={AppRoute.Offer} element={
           <MainLayout user={user} favoriteCount={favorites.length}>
             <OfferPage offerDetails={offersDetail} reviewsMap={reviewsMap} />
           </MainLayout>
-        } />
+        }
+        />
         <Route path={AppRoute.Favorites} element={
           <PrivateRoute user={user}>
             <MainLayout user={user} favoriteCount={favorites.length} >

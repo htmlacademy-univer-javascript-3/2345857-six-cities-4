@@ -19,7 +19,7 @@ export const OfferCardList: FC<OfferCardListProps> = ({ offers, setActivePoint, 
   const dispatch = useAppDispatch();
 
   const activeCity = useAppSelector(selectCurrentCity);
-  
+
   const handleCardFocus = (id: string) => {
     const point = points.find((p) => p.id === id);
     const city = offers.find((offer) => offer.id === id)?.city;

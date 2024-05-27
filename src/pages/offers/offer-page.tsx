@@ -20,10 +20,6 @@ export const OfferPage: FC<OfferPageProps> = ({ offerDetails, reviewsMap }) => {
   const { id } = useParams();
   const offer = offerDetails.find((it) => String(it.id) === id);
 
-  if (!offer) {
-    return <Navigate to="/not_found" />;
-  }
-
   // TODO: Remove direct mock data access
   const offers = MOCK_OFFERS.slice(0, 2);
 
@@ -52,6 +48,10 @@ export const OfferPage: FC<OfferPageProps> = ({ offerDetails, reviewsMap }) => {
   const handleCardMouseLeave = () => {
     setActivePoint(undefined);
   };
+
+  if (!offer) {
+    return <Navigate to="/not_found" />;
+  }
 
   return (
     <div className="page">

@@ -9,9 +9,9 @@ import { CITIES } from '../../const';
 
 export const MainPage: FC = () => {
   const [activePoint, setActivePoint] = useState<Point>();
-  
-  const activeCity = useAppSelector(selectCurrentCity)
-  const offers = useAppSelector(selectCurrentOffers).filter((offer) => offer.city.name === activeCity.name)
+
+  const activeCity = useAppSelector(selectCurrentCity);
+  const offers = useAppSelector(selectCurrentOffers).filter((offer) => offer.city.name === activeCity.name);
 
   const points = useMemo<Point[]>(
     () =>
@@ -42,4 +42,4 @@ export const MainPage: FC = () => {
       </main>
     </div>
   );
-}
+};
