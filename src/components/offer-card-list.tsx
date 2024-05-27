@@ -7,7 +7,6 @@ import { getOfferCardClassName } from '../utils/offer-card-classname';
 import { useAppDispatch, useAppSelector } from '../store/helpers';
 import { selectCurrentCity } from '../store/selectors';
 import { updateCity } from '../store/action';
-import { act } from 'react-dom/test-utils';
 
 type OfferCardListProps = {
     offers: Offer[];

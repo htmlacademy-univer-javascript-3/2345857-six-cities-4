@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { MainPage } from './pages/main/main-page';
-import { BrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { LoginPage } from './pages/auth/login-page';
 import { OfferPage } from './pages/offers/offer-page';
 import { PrivateRoute } from './components/private-route';

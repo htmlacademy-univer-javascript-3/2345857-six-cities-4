@@ -16,7 +16,6 @@ export const CityPicker: FC<CityPickerProps> = ({ cities }) => {
   const dispatch = useAppDispatch();
 
   const handleCityClick = useCallback((city: City) => {
-    console.log("Updating city with: " + city)
     dispatch(updateCity(city));
   }, [dispatch]);
 
