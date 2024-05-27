@@ -57,5 +57,11 @@ export const Map: FC<MapProps> = (props) => {
     }
   }, [map, points, selectedPoint]);
 
+  useEffect(() => {
+    if (map) {
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+    }
+  }, [map, city]);
+
   return <div className={classNames('map', props.className)} ref={mapRef}></div>;
 };

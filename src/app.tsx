@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { MainPage } from './pages/main/main-page';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, RouterProvider, Routes } from 'react-router-dom';
 import { LoginPage } from './pages/auth/login-page';
 import { OfferPage } from './pages/offers/offer-page';
 import { PrivateRoute } from './components/private-route';
@@ -12,6 +12,8 @@ import { OfferDetail } from './types/offer-detail';
 import { Review } from './types/review';
 import { User } from './types/user';
 import { MainLayout } from './layouts/main-layout';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 type AppProps = {
     offers: Offer[];
@@ -22,29 +24,31 @@ type AppProps = {
 }
 
 export const App: FC<AppProps> = ({ offers, offersDetail, reviewsMap, user, favorites }) => (
-  <BrowserRouter>
-    <Routes>
-      <Route path={AppRoute.Index} element={
-        <MainLayout color="gray" user={user} favoriteCount={favorites.length}>
-          <MainPage offers={offers} />
-        </MainLayout>
-      } />
-      <Route path={AppRoute.Login} element={<LoginPage />} />
-      <Route path={AppRoute.Offer} element={
-        <MainLayout user={user} favoriteCount={favorites.length}>
-          <OfferPage offerDetails={offersDetail} reviewsMap={reviewsMap} />
-        </MainLayout>
-      } />
-      <Route path={AppRoute.Favorites} element={
-        <PrivateRoute user={user}>
-          <MainLayout user={user} favoriteCount={favorites.length} >
-            <FavoritesPage offers={offers} user={user} favorites={favorites} />
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path={AppRoute.Index} element={
+          <MainLayout color="gray" user={user} favoriteCount={favorites.length}>
+            <MainPage />
           </MainLayout>
-        </PrivateRoute>
-      }
-      />
-      <Route path="*" element={<NotFoundPage />}/>
-    </Routes>
-  </BrowserRouter>
+        } />
+        <Route path={AppRoute.Login} element={<LoginPage />} />
+        <Route path={AppRoute.Offer} element={
+          <MainLayout user={user} favoriteCount={favorites.length}>
+            <OfferPage offerDetails={offersDetail} reviewsMap={reviewsMap} />
+          </MainLayout>
+        } />
+        <Route path={AppRoute.Favorites} element={
+          <PrivateRoute user={user}>
+            <MainLayout user={user} favoriteCount={favorites.length} >
+              <FavoritesPage offers={offers} user={user} favorites={favorites} />
+            </MainLayout>
+          </PrivateRoute>
+        }
+        />
+        <Route path="*" element={<NotFoundPage />}/>
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 );
 
