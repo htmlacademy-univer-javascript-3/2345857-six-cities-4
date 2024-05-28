@@ -38,7 +38,7 @@ export const MainPage: FC = () => {
         <h1 className="visually-hidden">Cities</h1>
         <CityPicker cities={CITIES} />
         <div className="cities">
-        {
+          {
             offers.length > 0 ? (
               <div className="cities__places-container container">
                 <OfferCardList offers={offers ?? []} setActivePoint={setActivePoint}

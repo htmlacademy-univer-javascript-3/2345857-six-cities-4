@@ -70,8 +70,8 @@ export const OfferCardList: FC<OfferCardListProps> = ({ offers, setActivePoint, 
 
   const handleFavoriteClick = useCallback((id: string, status: boolean) => {
     if (authStatus !== AuthStatus.LOGGED_IN) {
-      navigate(AppRoute.Login)
-      return
+      navigate(AppRoute.Login);
+      return;
     }
     dispatch(updateOfferFavoriteStatusAsync({id, status})).then((result) => {
       dispatch(updateSingleOfferFavorite({id, status: result.payload as boolean}));
