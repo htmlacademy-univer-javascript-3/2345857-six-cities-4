@@ -19,7 +19,7 @@ export const App: FC = () => {
     fetchOffersAsync(),
     fetchAuth(),
     fetchFavorites()
-  ].forEach(dispatch)
+  ].forEach(dispatch);
 
   return (
     <BrowserRouter>

@@ -22,7 +22,7 @@ export const OfferPage: FC = () => {
   const authStatus = useAppSelector(selectAuthStatus);
 
   const dispatch = useAppDispatch();
-  
+
   const points = useMemo<Point[]>(
     () =>
       nearbyOffers?.map((item) => ({
@@ -40,13 +40,13 @@ export const OfferPage: FC = () => {
   useEffect(() => {
     setIsOfferInFavorites(offer?.isFavorite ?? false);
   }, [offer?.isFavorite]);
-  
+
   const handleFavoriteClick = useCallback(() => {
     dispatch(updateOfferFavoriteStatus({id: id ?? '', status: !isOfferInFavorites})).then((result) => {
       setIsOfferInFavorites(result.payload as boolean);
     });
   }, [id, isOfferInFavorites, dispatch]);
-  
+
   if (isLoading) {
     return (
       <Spinner />
@@ -90,7 +90,10 @@ export const OfferPage: FC = () => {
                 <h1 className="offer__name">
                   {offer.title}
                 </h1>
-                <button className={`offer__bookmark-button ${isOfferInFavorites ? 'offer__bookmark-button--active' : ''} button`} type="button" onClick={() => {handleFavoriteClick()}}>
+                <button className={`offer__bookmark-button ${isOfferInFavorites ? 'offer__bookmark-button--active' : ''} button`} type="button" onClick={() => {
+                  handleFavoriteClick();
+                }}
+                >
                   <svg className="offer__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>

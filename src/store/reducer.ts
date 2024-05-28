@@ -6,7 +6,6 @@ import { addToFavorites, removeFromFavorites, signIn, signOut, updateAuthStatus,
 import { SortMethod } from '../types/sort-method';
 import { AuthStatus } from '../types/auth-status';
 import { User } from '../types/user';
-import { act } from 'react-dom/test-utils';
 
 type StoreState = {
     city: City;
@@ -44,31 +43,31 @@ export const reducer = createReducer(initState, (builder) => {
       state.isLoading = action.payload;
     })
     .addCase(updateAuthStatus, (state, action) => {
-        state.authStatus = action.payload
+      state.authStatus = action.payload;
     })
     .addCase(signIn, (state, action) => {
-        state.user = action.payload
-        state.authStatus = AuthStatus.LOGGED_IN
+      state.user = action.payload;
+      state.authStatus = AuthStatus.LOGGED_IN;
     })
     .addCase(signOut, (state) => {
-        state.user = undefined;
-        state.authStatus = AuthStatus.NO_AUTH
+      state.user = undefined;
+      state.authStatus = AuthStatus.NO_AUTH;
     })
     .addCase(addToFavorites, (state, action) => {
-        const offer = state.favorites.find((it) => it.id === action.payload.id);
-        if (offer) {
-            offer.isFavorite = action.payload.isFavorite;
-        } else {
-            state.favorites.push(action.payload);
-        }
+      const offer = state.favorites.find((it) => it.id === action.payload.id);
+      if (offer) {
+        offer.isFavorite = action.payload.isFavorite;
+      } else {
+        state.favorites.push(action.payload);
+      }
     })
     .addCase(removeFromFavorites, (state, action) => {
-        state.favorites = state.favorites.filter((offer) => offer.id !== action.payload)
+      state.favorites = state.favorites.filter((offer) => offer.id !== action.payload);
     })
     .addCase(updateFavorites, (state, action) => {
-        state.favorites = action.payload
+      state.favorites = action.payload;
     })
     .addCase(updateFavoritesLoadingStatus, (state, action) => {
-        state.favoritesLoading = action.payload
-    })
+      state.favoritesLoading = action.payload;
+    });
 });
