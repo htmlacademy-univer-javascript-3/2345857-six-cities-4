@@ -10,12 +10,10 @@ interface MainLayoutProps {
 
 export const MainLayout: FC<PropsWithChildren<MainLayoutProps>> = ({
   children,
-  color,
-  user,
-  favoriteCount
+  color
 }) => (
   <div className={`page ${color ? `page--${color}` : ''}`}>
-    <HeaderView user={user} favoriteCount={favoriteCount} />
+    <HeaderView />
     {children}
   </div>
 );
