@@ -14,7 +14,7 @@ export const OfferPage: FC = () => {
   const { id } = useParams();
 
   const {offerDetail: offer, reviews, nearbyOffers, isLoading} = useGetOfferDetail({ id: id ?? '' });
-  
+
   const points = useMemo<Point[]>(
     () =>
       nearbyOffers?.map((item) => ({
@@ -137,25 +137,25 @@ export const OfferPage: FC = () => {
         </section>
         {
           nearbyOffers && nearbyOffers.length > 0 && (
-<div className="container">
-          <section className="near-places places">
-            <Map city={offer.city} points={points} selectedPoint={activePoint} className='offer__map' />
-            <h2 className="near-places__title">
+            <div className="container">
+              <section className="near-places places">
+                <Map city={offer.city} points={points} selectedPoint={activePoint} className='offer__map' />
+                <h2 className="near-places__title">
               Other places in the neighbourhood
-            </h2>
-            <div className="near-places__list places__list">
-              {nearbyOffers.map((item) => (
-                <OfferCard
-                  key={item.id}
-                  prefix={'near-places'}
-                  onMouseEnter={() => handleCardMouseEnter(item.id)}
-                  onMouseLeave={handleCardMouseLeave}
-                  offer={item}
-                />
-              ))}
+                </h2>
+                <div className="near-places__list places__list">
+                  {nearbyOffers.map((item) => (
+                    <OfferCard
+                      key={item.id}
+                      prefix={'near-places'}
+                      onMouseEnter={() => handleCardMouseEnter(item.id)}
+                      onMouseLeave={handleCardMouseLeave}
+                      offer={item}
+                    />
+                  ))}
+                </div>
+              </section>
             </div>
-          </section>
-        </div>
           )
         }
       </main>

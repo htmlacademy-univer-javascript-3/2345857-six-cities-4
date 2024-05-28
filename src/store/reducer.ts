@@ -30,6 +30,6 @@ export const reducer = createReducer(initState, (builder) => {
       state.sortMethod = action.payload;
     })
     .addCase(updateLoading, (state, action) => {
-        state.isLoading = action.payload
-    })
+      state.isLoading = action.payload;
+    });
 });

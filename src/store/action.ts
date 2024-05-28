@@ -9,8 +9,8 @@ export const updateOffers = createAction<Offer[]>('offers/updateOffersList');
 export const updateSortMethod = createAction<SortMethod>('offers/updateSortMethod');
 export const updateLoading = createAction<boolean>('offers/changeLoading');
 export const fetchOffersAsync = createAsyncThunk<void, undefined, ThunkConfig>('offers/fetchOffersAsync', async (_,{extra, dispatch}) => {
-    dispatch(updateLoading(true));
-    const response = await extra.get<Offer[]>('/offers');
-    dispatch(updateOffers(response.data))
-    dispatch(updateLoading(false));
-})
+  dispatch(updateLoading(true));
+  const response = await extra.get<Offer[]>('/offers');
+  dispatch(updateOffers(response.data));
+  dispatch(updateLoading(false));
+});

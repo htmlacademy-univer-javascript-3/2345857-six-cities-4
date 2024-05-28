@@ -13,36 +13,36 @@ import { fetchOffersAsync } from './store/action';
 
 
 export const App: FC = () => {
-  const dispatch = useAppDispatch()
-  
-  dispatch(fetchOffersAsync())
+  const dispatch = useAppDispatch();
+
+  dispatch(fetchOffersAsync());
 
   return (
-  <BrowserRouter>
-    <Routes>
-      <Route path={AppRoute.Index} element={
-        <MainLayout color="gray" user={undefined} favoriteCount={0}>
-          <MainPage />
-        </MainLayout>
-      }
-      />
-      <Route path={AppRoute.Login} element={<LoginPage />} />
-      <Route path={AppRoute.Offer} element={
-        <MainLayout user={undefined} favoriteCount={0}>
-          <OfferPage />
-        </MainLayout>
-      }
-      />
-      <Route path={AppRoute.Favorites} element={
-        <PrivateRoute user={null}>
-          <MainLayout user={undefined} favoriteCount={0} >
-            <FavoritesPage offers={[]} favorites={[]} />
+    <BrowserRouter>
+      <Routes>
+        <Route path={AppRoute.Index} element={
+          <MainLayout color="gray" user={undefined} favoriteCount={0}>
+            <MainPage />
           </MainLayout>
-        </PrivateRoute>
-      }
-      />
-      <Route path="*" element={<NotFoundPage />}/>
-    </Routes>
-  </BrowserRouter>
-);
+        }
+        />
+        <Route path={AppRoute.Login} element={<LoginPage />} />
+        <Route path={AppRoute.Offer} element={
+          <MainLayout user={undefined} favoriteCount={0}>
+            <OfferPage />
+          </MainLayout>
+        }
+        />
+        <Route path={AppRoute.Favorites} element={
+          <PrivateRoute user={null}>
+            <MainLayout user={undefined} favoriteCount={0} >
+              <FavoritesPage offers={[]} favorites={[]} />
+            </MainLayout>
+          </PrivateRoute>
+        }
+        />
+        <Route path="*" element={<NotFoundPage />}/>
+      </Routes>
+    </BrowserRouter>
+  );
 };
