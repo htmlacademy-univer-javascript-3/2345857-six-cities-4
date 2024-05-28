@@ -66,7 +66,7 @@ export const OfferCardList: FC<OfferCardListProps> = ({ offers, setActivePoint, 
       dispatch(updateSingleOfferFavorite({id, status: result.payload as boolean}));
     });
   }, [dispatch]);
-  
+
   return (
     <section className={classNames(getOfferCardClassName(prefix, 'places'), 'places')}>
       <h2 className="visually-hidden">Places</h2>

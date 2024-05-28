@@ -71,7 +71,7 @@ export const reducer = createReducer(initState, (builder) => {
       state.favoritesLoading = action.payload;
     })
     .addCase(updateSingleOfferFavorite, (state, action) => {
-        const offer = state.offers.find((item) => item.id === action.payload.id);
+      const offer = state.offers.find((item) => item.id === action.payload.id);
       if (offer) {
         offer.isFavorite = action.payload.status;
       }

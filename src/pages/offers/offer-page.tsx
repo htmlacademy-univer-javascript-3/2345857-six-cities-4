@@ -15,13 +15,12 @@ import { updateOfferFavoriteStatus } from '../../store/action';
 import { AuthStatus } from '../../types/auth-status';
 import useMutation from '../../hooks/use-mutation';
 import { Review } from '../../types/review';
-import { Comment } from '../../types/comment';
 
 export const OfferPage: FC = () => {
   const { id } = useParams();
 
   const {offerDetail: offer, reviews, nearbyOffers, isLoading, addReview, changeOfferIsFavorite} = useGetOfferDetail({ id: id ?? '' });
-  
+
   const authStatus = useAppSelector(selectAuthStatus);
 
   const dispatch = useAppDispatch();
@@ -62,7 +61,7 @@ export const OfferPage: FC = () => {
     },
   });
 
-  
+
   if (isLoading) {
     return (
       <Spinner />
@@ -170,7 +169,12 @@ export const OfferPage: FC = () => {
               <section className="offer__reviews reviews">
                 <ReviewsList reviews={reviews} />
                 {
-                  authStatus === AuthStatus.LOGGED_IN && (<WriteReviewForm onSend={(comment) => {mutate(JSON.stringify(comment))}} />)
+                  authStatus === AuthStatus.LOGGED_IN && (
+                    <WriteReviewForm onSend={(comment) => {
+                      mutate(JSON.stringify(comment));
+                    }}
+                    />
+                  )
                 }
               </section>
             </div>
