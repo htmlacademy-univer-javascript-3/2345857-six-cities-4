@@ -76,16 +76,16 @@ export const OfferPage: FC = () => {
     return null;
   }
 
-  const handleCardMouseEnter = (placeId: string) => {
+  const handleCardMouseEnter = useCallback((placeId: string) => {
     const point = points.find((p) => p.id === placeId);
     if (point) {
       setActivePoint(point);
     }
-  };
+  }, [points]);
 
-  const handleCardMouseLeave = () => {
+  const handleCardMouseLeave = useCallback(() => {
     setActivePoint(undefined);
-  };
+  }, []);
 
   return (
     <div className="page">
