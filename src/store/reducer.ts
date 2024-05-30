@@ -52,7 +52,6 @@ export const reducer = createReducer(initState, (builder) => {
     .addCase(signOut, (state) => {
       state.user = undefined;
       state.authStatus = AuthStatus.NO_AUTH;
-      fetchOffersAsync();
     })
     .addCase(addToFavorites, (state, action) => {
       const offer = state.favorites.find((it) => it.id === action.payload.id);

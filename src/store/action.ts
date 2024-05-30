@@ -51,14 +51,16 @@ export const loginAsync = createAsyncThunk<void, { email: string; password: stri
       localStorage.setItem(LOCAL_STORAGE_TOKEN, response.data.token);
     }
     dispatch(updateAuthStatus(AuthStatus.LOGGED_IN));
+    dispatch(fetchOffersAsync())
+    dispatch(fetchFavoritesAsync())
   }
 });
 
 export const logoutAsync = createAsyncThunk<void, undefined, ThunkConfig>('auth/logout', async (_, { extra, dispatch }) => {
   await extra.delete('/logout');
   dispatch(signOut());
-  dispatch(fetchOffersAsync());
   localStorage.removeItem('six-cities-token');
+  dispatch(fetchOffersAsync());
 });
 
 
