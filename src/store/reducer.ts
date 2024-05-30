@@ -2,7 +2,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { CITIES } from '../const';
 import { Offer } from '../types/offer';
 import { City } from '../types/city';
-import { addToFavorites, fetchOffersAsync, removeFromFavorites, signIn, signOut, updateAuthStatus, updateCity, updateFavorites, updateFavoritesLoadingStatus, updateLoading, updateOffers, updateSingleOfferFavorite, updateSortMethod } from './action';
+import { addToFavorites, removeFromFavorites, signIn, signOut, updateAuthStatus, updateCity, updateFavorites, updateFavoritesLoadingStatus, updateLoading, updateOffers, updateSingleOfferFavorite, updateSortMethod } from './action';
 import { SortMethod } from '../types/sort-method';
 import { AuthStatus } from '../types/auth-status';
 import { User } from '../types/user';
