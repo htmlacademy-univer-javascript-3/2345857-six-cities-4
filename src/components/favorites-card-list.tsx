@@ -5,7 +5,6 @@ import { updateCity, updateOfferFavoriteStatusAsync, updateSingleOfferFavorite }
 import { useAppDispatch } from '../store/helpers';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../types/app-route';
-import { CITIES } from '../const';
 import { City } from '../types/city';
 import { getCityByName } from '../utils/city-getter';
 
@@ -31,7 +30,7 @@ export const FavoritesCardList: FC<FavoritesCardListProps> = ({ offers }) => {
       return;
     }
     dispatch(updateCity(city));
-  }, [dispatch, CITIES]);
+  }, [dispatch]);
 
   return (
     <div className="favorites__list">
